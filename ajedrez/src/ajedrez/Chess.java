@@ -3,36 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ajedrez;
 
-import java.util.Random;
+import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  *
  * @author Ramón
  */
 public class Chess {
+
     private char[][] chessTable;
     private int fileSize;
     private int colSize;
+    
+    private byte finalFileMov;
+    private byte finalColMov;
+    private byte startFileMov;
+    private byte startColMov;
+    private Point selectedMov;
+    
+    private ArrayList<Point> chessPosList = new ArrayList();
 
     public static final char EMPTY = '.';
     public static final char KING = '+';
     public static final char QUEEN = '*';
     public static final char WALL = '#';
-    public static final char ROOK = 'T';
+    public static final char ROOK = 'R';
     public static final char KNIGHT = 'K';
     public static final char PAWN = 'P';
     public static final char BISHOP = 'B';
 
-
-    
     public static final byte DERECHA = 0;
     public static final byte IZQUIERDA = 1;
     public static final byte ARRIBA = 2;
     public static final byte ABAJO = 3;
-    
+
     /*
      Información contenida en el tablero:
      ' ': Vacío
@@ -65,9 +72,8 @@ public class Chess {
         for (int i = 0; i <= 7; i++) {
             chessTable[1][i] = PAWN;
         }
-        
+
         //BLANCAS
-        
         for (int i = 0; i <= 7; i++) {
             chessTable[6][i] = PAWN;
         }
@@ -80,7 +86,34 @@ public class Chess {
         chessTable[7][6] = KNIGHT;
         chessTable[7][7] = ROOK;
     }
-    
+
+    public void setMovement(byte startFileMov, byte startColMov, byte finalFileMov, byte finalColMov) {
+        this.finalFileMov = finalFileMov;
+        this.finalColMov = finalColMov;
+        this.startFileMov = startFileMov;
+        this.startColMov = startColMov;
+        char selectedPiece = ' ';
+        
+        selectedMov = new Point();
+        
+        selectedMov.x = startFileMov;
+        selectedMov.y = startColMov;
+        
+        chessTable[selectedMov.x][selectedMov.y] = EMPTY;
+        chessPosList.add(0, selectedMov);
+        
+        
+        
+        selectedMov.x = finalFileMov;
+        selectedMov.y = finalColMov;
+        
+        chessPosList.add(1,selectedMov);
+        
+        
+        chessTable[selectedMov.x][selectedMov.y] = selectedPiece;
+        
+    }
+
     public String toString() {
         String retorno = "";
         for (int f = 0; f < fileSize; f++) {
