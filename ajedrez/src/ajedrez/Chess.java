@@ -22,7 +22,11 @@ public class Chess {
     private byte finalColMov;
     private byte startFileMov;
     private byte startColMov;
-    private Point selectedMov;
+    private char selectedPiece;
+    
+    private Point startSelectedMov;
+    
+    private Point finalSelectedMov;
     
     private ArrayList<Point> chessPosList = new ArrayList();
 
@@ -87,30 +91,32 @@ public class Chess {
         chessTable[7][7] = ROOK;
     }
 
-    public void setMovement(byte startFileMov, byte startColMov, byte finalFileMov, byte finalColMov) {
+    public void setMovement(byte startFileMov, byte startColMov, byte finalFileMov, byte finalColMov,char selectedPiece) {
         this.finalFileMov = finalFileMov;
         this.finalColMov = finalColMov;
         this.startFileMov = startFileMov;
         this.startColMov = startColMov;
-        char selectedPiece = ' ';
         
-        selectedMov = new Point();
+        this.selectedPiece = selectedPiece;
         
-        selectedMov.x = startFileMov;
-        selectedMov.y = startColMov;
+        startSelectedMov = new Point();
+        finalSelectedMov= new Point();
+        startSelectedMov.x = startFileMov;
+        startSelectedMov.y = startColMov;
         
-        chessTable[selectedMov.x][selectedMov.y] = EMPTY;
-        chessPosList.add(0, selectedMov);
-        
-        
-        
-        selectedMov.x = finalFileMov;
-        selectedMov.y = finalColMov;
-        
-        chessPosList.add(1,selectedMov);
+        chessTable[startSelectedMov.x][startSelectedMov.y] = EMPTY;
+        chessPosList.add(0, startSelectedMov);
         
         
-        chessTable[selectedMov.x][selectedMov.y] = selectedPiece;
+        
+        finalSelectedMov.x = finalFileMov;
+        finalSelectedMov.y = finalColMov;
+        
+        chessPosList.add(1,finalSelectedMov);
+        
+        
+        chessTable[finalSelectedMov.x][finalSelectedMov.y] = selectedPiece;
+        
         
     }
 
