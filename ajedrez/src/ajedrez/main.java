@@ -6,6 +6,8 @@
 
 package ajedrez;
 
+import java.awt.Point;
+
 /**
  *
  * @author Ramón
@@ -15,6 +17,7 @@ public class main extends javax.swing.JFrame {
     /**
      * Creates new form main
      */
+    Chess chess;
     public main() {
         initComponents();
     }
@@ -108,7 +111,7 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Chess chess = new Chess(8,8);
+        chess = new Chess(8,8);
         jTextArea1.setText(chess.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -117,7 +120,19 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Point chessPoint = new Point();
+        byte startRowMov;
+        byte startColMov;
+        byte finalRowMov;
+        byte finalColMov;
+        
+        startRowMov = Byte.valueOf(jTextField1.getText());
+        startColMov = Byte.valueOf(jTextField2.getText());
+        finalRowMov = Byte.valueOf(jTextField3.getText());
+        finalColMov = Byte.valueOf(jTextField4.getText());
+        
+        chess.setMovement(startRowMov, startColMov, finalRowMov, finalColMov);
+        jTextArea1.setText(chess.toString());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

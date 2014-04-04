@@ -15,19 +15,13 @@ import java.util.ArrayList;
 public class Chess {
 
     private char[][] chessTable;
-    private int fileSize;
+    private int rowSize;
     private int colSize;
-    
-    private byte finalFileMov;
-    private byte finalColMov;
-    private byte startFileMov;
-    private byte startColMov;
-    private char selectedPiece;
-    
+
     private Point startSelectedMov;
-    
+
     private Point finalSelectedMov;
-    
+
     private ArrayList<Point> chessPosList = new ArrayList();
 
     public static final char EMPTY = '.';
@@ -54,7 +48,7 @@ public class Chess {
      */
     public Chess(int fileSize, int colSize) {
         //Asignar el valor de los datos para guardarlos arriba y que se puedan tener en otro método.
-        this.fileSize = fileSize;
+        this.rowSize = fileSize;
         this.colSize = colSize;
         chessTable = new char[fileSize][colSize];
         //Inicializamos el tablero con todo vacío
@@ -91,38 +85,19 @@ public class Chess {
         chessTable[7][7] = ROOK;
     }
 
-    public void setMovement(byte startFileMov, byte startColMov, byte finalFileMov, byte finalColMov,char selectedPiece) {
-        this.finalFileMov = finalFileMov;
-        this.finalColMov = finalColMov;
-        this.startFileMov = startFileMov;
-        this.startColMov = startColMov;
-        
-        this.selectedPiece = selectedPiece;
-        
-        startSelectedMov = new Point();
-        finalSelectedMov= new Point();
-        startSelectedMov.x = startFileMov;
-        startSelectedMov.y = startColMov;
-        
-        chessTable[startSelectedMov.x][startSelectedMov.y] = EMPTY;
-        chessPosList.add(0, startSelectedMov);
-        
-        
-        
-        finalSelectedMov.x = finalFileMov;
-        finalSelectedMov.y = finalColMov;
-        
-        chessPosList.add(1,finalSelectedMov);
-        
-        
-        chessTable[finalSelectedMov.x][finalSelectedMov.y] = selectedPiece;
-        
-        
-    }
+    public void setMovement(byte startRowMov, byte startColMov, byte finalRowMov, byte finalColMov) {
+    char initialPiece;
+    
+    initialPiece  = chessTable[startRowMov][startColMov];
+    chessTable[startRowMov][startColMov] = EMPTY;
+    chessTable [finalRowMov][finalColMov] = initialPiece ;
+    
 
-    public String toString() {
+}
+
+public String toString() {
         String retorno = "";
-        for (int f = 0; f < fileSize; f++) {
+        for (int f = 0; f < rowSize; f++) {
             for (int c = 0; c < colSize; c++) {
                 retorno += chessTable[f][c];
             }
