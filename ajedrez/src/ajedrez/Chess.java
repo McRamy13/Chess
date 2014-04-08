@@ -46,6 +46,9 @@ public class Chess {
      '#': Muro
      '$': Fruta
      */
+    
+    
+
     public Chess(int fileSize, int colSize) {
         //Asignar el valor de los datos para guardarlos arriba y que se puedan tener en otro método.
         this.rowSize = fileSize;
@@ -86,16 +89,25 @@ public class Chess {
     }
 
     public void setMovement(byte startRowMov, byte startColMov, byte finalRowMov, byte finalColMov) {
-    char initialPiece;
-    
-    initialPiece  = chessTable[startRowMov][startColMov];
-    chessTable[startRowMov][startColMov] = EMPTY;
-    chessTable [finalRowMov][finalColMov] = initialPiece ;
-    
+        char initialPiece;
 
-}
+        initialPiece = chessTable[startRowMov][startColMov];
+        chessTable[startRowMov][startColMov] = EMPTY;
+        chessTable[finalRowMov][finalColMov] = initialPiece;
 
-public String toString() {
+    }
+
+    public int getRowSize() {
+        return rowSize;
+    }
+
+    public int getColSize() {
+        return colSize;
+    }
+    public char[][] getChessTable() {
+        return chessTable;
+    }
+    public String toString() {
         String retorno = "";
         for (int f = 0; f < rowSize; f++) {
             for (int c = 0; c < colSize; c++) {
