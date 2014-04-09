@@ -24,7 +24,7 @@ public class ChessPanel extends javax.swing.JPanel {
      */
     private Chess chess;
     Image image;
-
+    public final int TAM_CASILLA = 10;
     public ChessPanel() {
         initComponents();
     }
@@ -36,13 +36,13 @@ public class ChessPanel extends javax.swing.JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+        chess = new Chess(8,8);
         if (chess != null) {
             for (int r = 0; r < chess.getRowSize(); r++) {
                 for (int c = 0; c < chess.getColSize(); c++) {
                     char contents = chess.getChessTable()[r][c];
                     switch (contents) {
                         case Chess.EMPTY:
-                            
                             break;
                         case Chess.PAWN:
                             try {
@@ -52,7 +52,7 @@ public class ChessPanel extends javax.swing.JPanel {
                             }
                             int pawnWidth = image.getWidth(null);
                             int pawnHeight = image.getHeight(null);
-                            g.drawImage(image, c * 20, r * 20, pawnWidth, pawnHeight, null);
+                            g.drawImage(image, c * 45, r * 45, pawnWidth, pawnHeight, null);
                             break;
                         case Chess.BISHOP:
                             try {
@@ -60,9 +60,9 @@ public class ChessPanel extends javax.swing.JPanel {
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                             int bishopWidth = image.getWidth(null);
-                             int bishopHeight = image.getHeight(null);
-                            g.drawImage(image, c * 20, r * 20, bishopWidth, bishopHeight, null);
+                            int bishopWidth = image.getWidth(null);
+                            int bishopHeight = image.getHeight(null);
+                            g.drawImage(image, c * 45, r * 45, bishopWidth, bishopHeight, null);
                             break;
                         case Chess.KNIGHT:
                             try {
@@ -70,9 +70,9 @@ public class ChessPanel extends javax.swing.JPanel {
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                             int knightWidth = image.getWidth(null);
-                             int knightHeight = image.getHeight(null);
-                            g.drawImage(image, c * 20, r * 20, knightWidth, knightHeight, null);
+                            int knightWidth = image.getWidth(null);
+                            int knightHeight = image.getHeight(null);
+                            g.drawImage(image, c * 45, r * 45, knightWidth, knightHeight, null);
                             break;
                         case Chess.KING:
                             try {
@@ -80,9 +80,9 @@ public class ChessPanel extends javax.swing.JPanel {
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                             int kingWidth = image.getWidth(null);
-                             int kingHeight = image.getHeight(null);
-                            g.drawImage(image, c * 20, r * 20, kingWidth, kingHeight, null);
+                            int kingWidth = image.getWidth(null);
+                            int kingHeight = image.getHeight(null);
+                            g.drawImage(image, c * 45, r * 45, kingWidth, kingHeight, null);
                             break;
                         case Chess.QUEEN:
                             try {
@@ -90,9 +90,9 @@ public class ChessPanel extends javax.swing.JPanel {
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                             int queenWidth = image.getWidth(null);
-                             int queenHeight = image.getHeight(null);
-                            g.drawImage(image, c * 20, r * 20, queenWidth, queenHeight, null);
+                            int queenWidth = image.getWidth(null);
+                            int queenHeight = image.getHeight(null);
+                            g.drawImage(image, c * 45, r * 45, queenWidth, queenHeight, null);
                             break;
                         case Chess.ROOK:
                             try {
@@ -100,9 +100,9 @@ public class ChessPanel extends javax.swing.JPanel {
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                             int rookWidth = image.getWidth(null);
-                             int rookHeight = image.getHeight(null);
-                            g.drawImage(image, c * 20, r * 20, rookWidth, rookHeight, null);
+                            int rookWidth = image.getWidth(null);
+                            int rookHeight = image.getHeight(null);
+                            g.drawImage(image, c * 45, r * 45, rookWidth, rookHeight, null);
                             break;
                         case Chess.WALL:
                             break;
@@ -110,6 +110,7 @@ public class ChessPanel extends javax.swing.JPanel {
                 }
             }
         }
+
     }
 
     /**
@@ -120,6 +121,14 @@ public class ChessPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        jSlider1 = new javax.swing.JSlider();
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,7 +142,13 @@ public class ChessPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        evt.getX()
+        chess.setMovement(startRowMov, startColMov, finalRowMov, finalColMov);
+    }//GEN-LAST:event_formMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
 }
