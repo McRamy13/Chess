@@ -143,6 +143,13 @@ public class ChessPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+       //hacer un if para que puedas mover las fichas con un contador de clicks.
+        
+       //Si el click es = 0 (primer click), coge las primeras coordenadas, si es igual a 1 (segundo click)
+        //coge la segunda.
+        
+        //Alfinal del if igualar el contador a 0 para que no siga contando.
+        
         evt.getX()
         chess.setMovement(startRowMov, startColMov, finalRowMov, finalColMov);
     }//GEN-LAST:event_formMouseReleased
