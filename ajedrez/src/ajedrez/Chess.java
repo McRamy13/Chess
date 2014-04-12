@@ -25,27 +25,22 @@ public class Chess {
     private ArrayList<Point> chessPosList = new ArrayList();
 
     public static final char EMPTY = '.';
-    public static final char KING = '+';
-    public static final char QUEEN = '*';
-    public static final char WALL = '#';
-    public static final char ROOK = 'R';
-    public static final char KNIGHT = 'K';
-    public static final char PAWN = 'P';
-    public static final char BISHOP = 'B';
+     public static final char WALL = '#';
+    public static final char WHITE_KING = '+';
+    public static final char WHITE_QUEEN = '*';
+    public static final char WHITE_ROOK = 'r';
+    public static final char WHITE_KNIGHT = 'k';
+    public static final char WHITE_PAWN = 'p';
+    public static final char WHITE_BISHOP = 'b';
+    public static final char BLACK_KING = '^';
+    public static final char BLACK_QUEEN = '$';
+    public static final char BLACK_ROOK = 'R';
+    public static final char BLACK_KNIGHT = 'K';
+    public static final char BLACK_PAWN = 'P';
+    public static final char BLACK_BISHOP = 'B';
 
-    public static final byte DERECHA = 0;
-    public static final byte IZQUIERDA = 1;
-    public static final byte ARRIBA = 2;
-    public static final byte ABAJO = 3;
 
-    /*
-     Información contenida en el tablero:
-     ' ': Vacío
-     '@': Cabeza
-     '=': Cuerpo
-     '#': Muro
-     '$': Fruta
-     */
+
     
     
 
@@ -61,31 +56,31 @@ public class Chess {
             }
         }
         //NEGRAS
-        chessTable[0][0] = ROOK;
-        chessTable[0][1] = KNIGHT;
-        chessTable[0][2] = BISHOP;
-        chessTable[0][3] = KING;
-        chessTable[0][4] = QUEEN;
-        chessTable[0][5] = BISHOP;
-        chessTable[0][6] = KNIGHT;
-        chessTable[0][7] = ROOK;
+        chessTable[0][0] = WHITE_ROOK;
+        chessTable[0][1] = WHITE_KNIGHT;
+        chessTable[0][2] = WHITE_BISHOP;
+        chessTable[0][3] = WHITE_KING;
+        chessTable[0][4] = WHITE_QUEEN;
+        chessTable[0][5] = WHITE_BISHOP;
+        chessTable[0][6] = WHITE_KNIGHT;
+        chessTable[0][7] = WHITE_ROOK;
         //Colocar el peón
         for (int i = 0; i <= 7; i++) {
-            chessTable[1][i] = PAWN;
+            chessTable[1][i] = WHITE_PAWN;
         }
 
         //BLANCAS
         for (int i = 0; i <= 7; i++) {
-            chessTable[6][i] = PAWN;
+            chessTable[6][i] = BLACK_PAWN;
         }
-        chessTable[7][0] = ROOK;
-        chessTable[7][1] = KNIGHT;
-        chessTable[7][2] = BISHOP;
-        chessTable[7][3] = QUEEN;
-        chessTable[7][4] = KING;
-        chessTable[7][5] = BISHOP;
-        chessTable[7][6] = KNIGHT;
-        chessTable[7][7] = ROOK;
+        chessTable[7][0] = BLACK_ROOK;
+        chessTable[7][1] = BLACK_KNIGHT;
+        chessTable[7][2] = BLACK_BISHOP;
+        chessTable[7][3] = BLACK_QUEEN;
+        chessTable[7][4] = BLACK_KING;
+        chessTable[7][5] = BLACK_BISHOP;
+        chessTable[7][6] = BLACK_KNIGHT;
+        chessTable[7][7] = BLACK_ROOK;
     }
 
     public void setMovement(byte startRowMov, byte startColMov, byte finalRowMov, byte finalColMov) {

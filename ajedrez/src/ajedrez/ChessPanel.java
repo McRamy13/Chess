@@ -25,6 +25,7 @@ public class ChessPanel extends javax.swing.JPanel {
     private Chess chess;
     Image image;
     public final int TAM_CASILLA = 10;
+    public final int BETWEEN_PIECES_SIZE = 50;
     public ChessPanel() {
         initComponents();
     }
@@ -42,69 +43,132 @@ public class ChessPanel extends javax.swing.JPanel {
                 for (int c = 0; c < chess.getColSize(); c++) {
                     char contents = chess.getChessTable()[r][c];
                     switch (contents) {
+                        //WHITE PIECES ON IT
                         case Chess.EMPTY:
                             break;
-                        case Chess.PAWN:
+                        case Chess.WHITE_PAWN:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-Pawn-White.png"));
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            int pawnWidth = image.getWidth(null);
-                            int pawnHeight = image.getHeight(null);
-                            g.drawImage(image, c * 45, r * 45, pawnWidth, pawnHeight, null);
+                            int whitePawnWidth = image.getWidth(null);
+                            int whitePawnHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, whitePawnWidth, whitePawnHeight, null);
                             break;
-                        case Chess.BISHOP:
+                        case Chess.WHITE_BISHOP:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-Bishop-White.png"));
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            int bishopWidth = image.getWidth(null);
-                            int bishopHeight = image.getHeight(null);
-                            g.drawImage(image, c * 45, r * 45, bishopWidth, bishopHeight, null);
+                            int whiteBishopWidth = image.getWidth(null);
+                            int whiteBishopHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, whiteBishopWidth, whiteBishopHeight, null);
                             break;
-                        case Chess.KNIGHT:
+                        case Chess.WHITE_KNIGHT:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-Knight-White.png"));
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            int knightWidth = image.getWidth(null);
-                            int knightHeight = image.getHeight(null);
-                            g.drawImage(image, c * 45, r * 45, knightWidth, knightHeight, null);
+                            int whiteKnightWidth = image.getWidth(null);
+                            int whiteKnightHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, whiteKnightWidth, whiteKnightHeight, null);
                             break;
-                        case Chess.KING:
+                        case Chess.WHITE_KING:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-King-White.png"));
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            int kingWidth = image.getWidth(null);
-                            int kingHeight = image.getHeight(null);
-                            g.drawImage(image, c * 45, r * 45, kingWidth, kingHeight, null);
+                            int whiteKingWidth = image.getWidth(null);
+                            int whiteKingHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, whiteKingWidth, whiteKingHeight, null);
                             break;
-                        case Chess.QUEEN:
+                        case Chess.WHITE_QUEEN:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-Queen-White.png"));
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            int queenWidth = image.getWidth(null);
-                            int queenHeight = image.getHeight(null);
-                            g.drawImage(image, c * 45, r * 45, queenWidth, queenHeight, null);
+                            int whiteQueenWidth = image.getWidth(null);
+                            int whiteQueenHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, whiteQueenWidth, whiteQueenHeight, null);
                             break;
-                        case Chess.ROOK:
+                        case Chess.WHITE_ROOK:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-Rook-White.png"));
                             } catch (IOException ex) {
                                 Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            int rookWidth = image.getWidth(null);
-                            int rookHeight = image.getHeight(null);
-                            g.drawImage(image, c * 45, r * 45, rookWidth, rookHeight, null);
+                            int whiteRookWidth = image.getWidth(null);
+                            int whiteRookHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, whiteRookWidth, whiteRookHeight, null);
                             break;
                         case Chess.WALL:
+                            break;
+                            
+                            //BLACK PIECES ON I
+                        case Chess.BLACK_PAWN:
+                            try {
+                                image = ImageIO.read(this.getClass().getResource("/resources/Chess-Pawn-Black.png"));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            int blackPawnWidth = image.getWidth(null);
+                            int blackPawnHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, blackPawnWidth, blackPawnHeight, null);
+                            break;
+                        case Chess.BLACK_BISHOP:
+                            try {
+                                image = ImageIO.read(this.getClass().getResource("/resources/Chess-Bishop-Black.png"));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            int blackBishopWidth = image.getWidth(null);
+                            int blackBishopHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, blackBishopWidth, blackBishopHeight, null);
+                            break;
+                        case Chess.BLACK_KNIGHT:
+                            try {
+                                image = ImageIO.read(this.getClass().getResource("/resources/Chess-Knight-Black.png"));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            int blackKnightWidth = image.getWidth(null);
+                            int blackKnightHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, blackKnightWidth, blackKnightHeight, null);
+                            break;
+                        case Chess.BLACK_KING:
+                            try {
+                                image = ImageIO.read(this.getClass().getResource("/resources/Chess-King-Black.png"));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            int blackKingWidth = image.getWidth(null);
+                            int blackKingHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, blackKingWidth, blackKingHeight, null);
+                            break;
+                        case Chess.BLACK_QUEEN:
+                            try {
+                                image = ImageIO.read(this.getClass().getResource("/resources/Chess-Queen-Black.png"));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            int blackQueenWidth = image.getWidth(null);
+                            int blackQueenHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, blackQueenWidth, blackQueenHeight, null);
+                            break;
+                        case Chess.BLACK_ROOK:
+                            try {
+                                image = ImageIO.read(this.getClass().getResource("/resources/Chess-Rook-Black.png"));
+                            } catch (IOException ex) {
+                                Logger.getLogger(ChessPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            int blackRookWidth = image.getWidth(null);
+                            int blackRookHeight = image.getHeight(null);
+                            g.drawImage(image, c * BETWEEN_PIECES_SIZE, r * BETWEEN_PIECES_SIZE, blackRookWidth, blackRookHeight, null);
                             break;
                     }
                 }
@@ -125,6 +189,9 @@ public class ChessPanel extends javax.swing.JPanel {
         jSlider1 = new javax.swing.JSlider();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 formMouseReleased(evt);
             }
@@ -150,9 +217,13 @@ public class ChessPanel extends javax.swing.JPanel {
         
         //Alfinal del if igualar el contador a 0 para que no siga contando.
         
-        evt.getX()
-        chess.setMovement(startRowMov, startColMov, finalRowMov, finalColMov);
+//        evt.getX()
+//        chess.setMovement(startRowMov, startColMov, finalRowMov, finalColMov);
     }//GEN-LAST:event_formMouseReleased
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
