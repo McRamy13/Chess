@@ -25,7 +25,7 @@ public class Chess {
     private ArrayList<Point> chessPosList = new ArrayList();
 
     public static final char EMPTY = '.';
-     public static final char WALL = '#';
+    public static final char WALL = '#';
     public static final char WHITE_KING = '+';
     public static final char WHITE_QUEEN = '*';
     public static final char WHITE_ROOK = 'r';
@@ -83,7 +83,7 @@ public class Chess {
         chessTable[7][7] = BLACK_ROOK;
     }
 
-    public void setMovement(byte startRowMov, byte startColMov, byte finalRowMov, byte finalColMov) {
+    public void setMovement(int startRowMov, int startColMov, int finalRowMov, int finalColMov) {
         char initialPiece;
 
         initialPiece = chessTable[startRowMov][startColMov];

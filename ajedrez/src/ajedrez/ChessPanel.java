@@ -5,9 +5,9 @@
  */
 package ajedrez;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +26,7 @@ public class ChessPanel extends javax.swing.JPanel {
     Image image;
     public final int TAM_CASILLA = 10;
     public final int BETWEEN_PIECES_SIZE = 50;
+
     public ChessPanel() {
         initComponents();
     }
@@ -34,10 +35,10 @@ public class ChessPanel extends javax.swing.JPanel {
         this.chess = chess;
     }
 
-    @Override
     public void paint(Graphics g) {
         super.paint(g);
-        chess = new Chess(8,8);
+        chess = new Chess(8, 8);
+
         if (chess != null) {
             for (int r = 0; r < chess.getRowSize(); r++) {
                 for (int c = 0; c < chess.getColSize(); c++) {
@@ -108,8 +109,8 @@ public class ChessPanel extends javax.swing.JPanel {
                             break;
                         case Chess.WALL:
                             break;
-                            
-                            //BLACK PIECES ON I
+
+                        //BLACK PIECES ON I
                         case Chess.BLACK_PAWN:
                             try {
                                 image = ImageIO.read(this.getClass().getResource("/resources/Chess-Pawn-Black.png"));
@@ -210,14 +211,35 @@ public class ChessPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-       //hacer un if para que puedas mover las fichas con un contador de clicks.
+        int countOfClicks = 0;
+        int oldXPostition = 0;
+        int oldYPosition = 0;
+        int newXPosition = 0 ;
+        int newYPosition = 0;
         
+        
+        
+        
+        countOfClicks = evt.getClickCount();
+        
+        if(countOfClicks == 0){
+            oldXPostition = evt.getX();
+            oldYPosition = evt.getY();
+        }else{
+            if(countOfClicks == 1){
+                newXPosition = evt.getX();
+                newYPosition = evt.getY();
+            chess.setMovement(oldXPostition, oldYPosition, newXPosition, newYPosition);
+            }
+            
+            countOfClicks = 0;
+        }
+        
+    
+        //hacer un if para que puedas mover las fichas con un contador de clicks.
        //Si el click es = 0 (primer click), coge las primeras coordenadas, si es igual a 1 (segundo click)
         //coge la segunda.
-        
         //Alfinal del if igualar el contador a 0 para que no siga contando.
-        
-//        evt.getX()
 //        chess.setMovement(startRowMov, startColMov, finalRowMov, finalColMov);
     }//GEN-LAST:event_formMouseReleased
 
